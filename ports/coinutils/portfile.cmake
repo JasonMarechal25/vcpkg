@@ -6,8 +6,10 @@ vcpkg_from_github(
     PATCHES coinutils.patch coinutils2.patch
 )
 
-message(STATUS "${CURRENT_INSTALLED_DIR}/share/coin-or-buildtools/")
+message(STATUS "PLOP ${CURRENT_INSTALLED_DIR}/share/coin-or-buildtools/")
 file(COPY "${CURRENT_INSTALLED_DIR}/share/coin-or-buildtools/" DESTINATION "${SOURCE_PATH}")
+
+execute_process(COMMAND ${SOURCE_PATH}/BuildTools/install_autotools.sh)
 
 set(ENV{ACLOCAL} "aclocal -I \"${SOURCE_PATH}/BuildTools\"")
 
