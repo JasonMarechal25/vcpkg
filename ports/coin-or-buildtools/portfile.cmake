@@ -1,5 +1,8 @@
 set(VCPKG_POLICY_EMPTY_PACKAGE enabled)
 
+#Generate error purposely
+message(FATAL_ERROR "This is an error")
+
 vcpkg_from_github(
     OUT_SOURCE_PATH BUILD_SCRIPTS_PATH
     REPO coin-or-tools/BuildTools
