@@ -6,11 +6,8 @@ vcpkg_from_github(
     PATCHES coinutils.patch coinutils2.patch
 )
 
-message(STATUS "PLOP ${CURRENT_INSTALLED_DIR}/share/coin-or-buildtools/")
 file(COPY "${CURRENT_INSTALLED_DIR}/share/coin-or-buildtools/" DESTINATION "${SOURCE_PATH}")
-
-execute_process(COMMAND ${SOURCE_PATH}/BuildTools/install_autotools.sh)
-
+set(ENV{COIN_AUTOTOOLS_DIR} ${CURRENT_PACKAGES_DIR}/tools/${PORT})
 set(ENV{ACLOCAL} "aclocal -I \"${SOURCE_PATH}/BuildTools\"")
 
 #--enable-msvc

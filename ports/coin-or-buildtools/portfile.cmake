@@ -8,6 +8,8 @@ vcpkg_from_github(
     PATCHES buildtools.patch
             buildtools2.patch
 )
+set(ENV{COIN_AUTOTOOLS_DIR} ${CURRENT_PACKAGES_DIR}/tools/${PORT})
+execute_process(COMMAND ${CURRENT_PACKAGES_DIR}/share/${PORT}/BuildTools/install_autotools.sh")
 
 file(COPY "${BUILD_SCRIPTS_PATH}/" DESTINATION "${CURRENT_PACKAGES_DIR}/share/${PORT}/BuildTools")
 
